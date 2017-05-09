@@ -1,0 +1,21 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-family: 'Love Ya Like A Sister', serif;
+  font-size: 64pt;
+  text-align: center;
+  margin: 30px;
+}
+
+h3 {
+  margin: 30px auto;
+  max-width: 700px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}

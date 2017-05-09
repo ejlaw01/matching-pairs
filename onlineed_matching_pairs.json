@@ -1,0 +1,23 @@
+[
+  {
+    "red": "roses",
+    "blue": "sky",
+    "yellow": "banana",
+    "green": "grass",
+    "purple": "eggplant"
+  },
+  {
+    "circle": "wheel",
+    "square": "Tiananmen",
+    "triangle": "isosceles",
+    "hexagon": "honeycomb",
+    "octagon": "stop!"
+  },
+  {
+    "cat": "meow",
+    "dog": "woof",
+    "cow": "moo",
+    "horse": "neigh",
+    "chicken": "cluck"
+  }
+]
