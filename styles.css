@@ -12,10 +12,73 @@ h1 {
 
 h3 {
   margin: 30px auto;
-  max-width: 700px;
+  max-width: 85%;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input {
+  height: 20px;
+  border: 1px solid grey;
+  border-radius: 2px;
+}
+
+button {
+  clear: both;
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12pt;
+  background: #04F06A;
+  padding: 15px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  margin: 0 auto;
+  cursor: pointer;
 }
 
 .container {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.matching-area {
+  display: block;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.key-words {
+  width: 300px;
+  float: left;
+}
+
+.key-words label {
+}
+
+.key-words input {
+  float: right;
+}
+
+.value-input-field {
+  display: inline-block;
+}
+
+.value-words {
+  float: right;
+}
+
+.value-words li {
+  cursor: move;
 }

@@ -1,4 +1,5 @@
 var chosenWordSet;
+var orderedValueWords = [];
 
 function load(file) {
   var actual_JSON;
@@ -30,16 +31,70 @@ function chooseWordSet(data) {
 }
 
 function displayWordSet(wordSet) {
+  var value;
   var keyWords = Object.getOwnPropertyNames(wordSet);
-  for (var i = 0; i < keyWords.length; i++) {
-    $('.key-words ul').append("<li>" + keyWords[i] + "</li>")
-  }
-  console.log(keyWords);
+  var shuffledValueWords = [];
 
+  for (value in wordSet) {
+    orderedValueWords.push(wordSet[value]);
+    shuffledValueWords.push(wordSet[value]);
+  }
+
+  shuffleArray(shuffledValueWords);
+
+  for (var i = 0; i < keyWords.length; i++) {
+    $('.key-words ul').append(
+      "<li>"
+      + "<label>"
+      + keyWords[i]
+      + "</label>"
+      + "<input class='value-input-field' type='text' name='word-" + i + "-input'>"
+      + "</li>"
+    );
+    $('.value-words ul').append(
+      "<li>"
+      + shuffledValueWords[i] +
+      "</li>"
+    );
+  }
+  console.log(keyWords + " : " + orderedValueWords + " : " + shuffledValueWords);
+
+}
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+  return array;
 }
 
 $(document).ready(function(){
 
   load("https://api.myjson.com/bins/14nftt");
+
+  $('form').submit(function(event) {
+    event.preventDefault();
+    var answers = [];
+
+    $('.value-input-field').each(function() {
+      answers.push($(this).val());
+    });
+
+    console.log(answers);
+    console.log(orderedValueWords);
+
+
+    for (var i = 0; i < answers.length; i++) {
+      if (answers[i] === orderedValueWords[i]) {
+        console.log(i + ": Correct!");
+      } else {
+        console.log(i + ": Incorrect");
+      }
+    }
+
+  });
 
 });
