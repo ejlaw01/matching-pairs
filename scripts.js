@@ -1,5 +1,6 @@
 var chosenWordSet;
 var orderedValueWords = [];
+var correctAnswers = 0;
 
 function load(file) {
   var actual_JSON;
@@ -43,19 +44,34 @@ function displayWordSet(wordSet) {
   shuffleArray(shuffledValueWords);
 
   for (var i = 0; i < keyWords.length; i++) {
+    //debugger;
     $('.key-words ul').append(
       "<li>"
       + "<label>"
       + keyWords[i]
       + "</label>"
-      + "<input class='value-input-field' type='text' name='word-" + i + "-input'>"
+      + "<input id='word-" + i + "-field' class='value-input-field' type='text' name='word-input-" + i + "'>"
       + "</li>"
     );
     $('.value-words ul').append(
-      "<li>"
+      "<li id='option-" + i + "'>"
       + shuffledValueWords[i] +
       "</li>"
     );
+
+    $('.key-words #word-' + i + '-field').data('answer', orderedValueWords[i]).droppable( {
+      accept: '.value-words li',
+      hoverClass: 'hovered',
+      drop: handleDropEvent
+    } );
+
+    $('.value-words #option-' + i).data('selection', shuffledValueWords[i]).draggable( {
+      containment: '.matching-area',
+      cursor: 'move',
+      revert: true,
+      snap: '.key-words input',
+      snapMode: 'inner'
+    } );
   }
   console.log(keyWords + " : " + orderedValueWords + " : " + shuffledValueWords);
 
@@ -69,6 +85,27 @@ function shuffleArray(array) {
       array[j] = temp;
   }
   return array;
+}
+
+function handleDropEvent( event, ui ) {
+  var draggable = ui.draggable;
+  var answer = $(this).data('answer');
+  var selection = ui.draggable.data('selection');
+
+  ui.draggable.draggable( 'option', 'revert', false );
+
+  if (answer === selection) {
+    console.log("Correct!");
+    ui.draggable.draggable( 'disable' );
+    correctAnswers++;
+  } else {
+    console.log("Nope!");
+  }
+
+  if (correctAnswers >= orderedValueWords.length) {
+    alert("All correct!");
+  }
+
 }
 
 $(document).ready(function(){

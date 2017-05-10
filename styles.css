@@ -64,11 +64,15 @@ button {
   float: left;
 }
 
-.key-words label {
+.key-words li {
+  height: 27px;
+  margin-bottom: 15px;
 }
 
 .key-words input {
   float: right;
+  height: 25px;
+  width: 120px;
 }
 
 .value-input-field {
@@ -80,5 +84,10 @@ button {
 }
 
 .value-words li {
+  text-align: center;
+  height: 25px;
+  width: 120px;
+  /*border: 1px solid black;
+  border-radius: 2px;*/
   cursor: move;
 }
