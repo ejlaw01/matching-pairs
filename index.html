@@ -4,31 +4,43 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-    <script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
     <script type="text/javascript" src="scripts.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
     <title>Matching Pairs</title>
   </head>
   <body>
     <div class="container">
       <h1>Matching Pairs</h1>
-      <h3>Instructions: Drag each word on the right to its most closely related counterpart.  When finished, click the button.</h3>
-      <div class="matching-area">
-        <form name="matching-pairs" class="matching-form">
-          <div class="key-words">
-            <ul>
+      <h3>Drag each word on the right into the box by its most closely related counterpart on the left.</h3>
+      <div class="matching-area row">
+        <div class="key-words three columns">
+          <ul>
 
-            </ul>
-          </div>
-          <div class="value-words">
-            <ul>
+          </ul>
+        </div>
+        <div class="droppable-area three columns">
+          <ul>
 
-            </ul>
-          </div>
-          <button id="submit-button" type="submit">Go!</button>
-        </form>
+          </ul>
+        </div>
+        <div class="value-words six columns">
+          <ul>
+
+          </ul>
+        </div>
+      </div>
+      <div class="button-area row">
+        <div class="six columns">
+          <button id="check" type="button">Check</button>
+        </div>
+        <div class="six columns">
+          <button id="reset" type="button" name="button">Reset</button>
+        </div>
       </div>
     </div>
   </body>

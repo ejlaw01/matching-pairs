@@ -1,0 +1,108 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  background: #FEFFFF;
+}
+
+h1 {
+  font-family: 'Love Ya Like A Sister', serif;
+  font-size: 64pt;
+  text-align: center;
+  margin: 30px;
+}
+
+h3 {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 960px;
+  font-size: 16pt;
+  margin-bottom: 70px;
+}
+
+h5 {
+  margin-bottom: 15px;
+  padding-top: 6px;
+}
+
+
+ul {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+li {
+  margin-bottom: 15px;
+  height: 50px;
+}
+
+button {
+  display: block;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12pt;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.matching-area {
+  display: block;
+  min-height: 350px;
+  margin: 0 auto;
+}
+
+.key-words {
+  width: 300px;
+}
+
+.key-words li {
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+.value-input-field {
+  height: 35px;
+  width: 170px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  transition: background .5s;
+}
+
+.value-input-field:first-of-type {
+  margin-top: 8px;
+}
+
+.value-words li {
+  text-align: center;
+  cursor: move;
+}
+
+.hovered {
+  background: lightgrey;
+}
+
+#check {
+  position: relative;
+  left: 15%;
+  background: #7DCE82;
+}
+#reset {
+  position: relative;
+  right: 15%;
+  background: #FF8360;
+}
+
+@media screen and (max-width: 650px) {
+  h5 {
+    font-size: 14pt;
+  }
+  .value-input-field {
+    width: 125px;
+  }
+}

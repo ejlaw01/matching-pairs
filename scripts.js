@@ -2,11 +2,10 @@ var chosenWordSet;
 var orderedValueWords = [];
 var correctAnswers = 0;
 
-function load(file) {
+function load() {
   var actual_JSON;
-  loadJSON(file, function(response) {
+  loadJSON("https://api.myjson.com/bins/14nftt", function(response) {
       actual_JSON = JSON.parse(response);
-      console.log(actual_JSON);
       chooseWordSet(actual_JSON);
       displayWordSet(chosenWordSet);
   });
@@ -26,7 +25,7 @@ function loadJSON(file, callback) {
 
 function chooseWordSet(data) {
   var wordSetNumber = Math.floor((Math.random() * data.length) + 1);
-  console.log(wordSetNumber);
+  console.log("Word Set: " + wordSetNumber);
   var wordSetObject = data.splice(wordSetNumber - 1, 1);
   chosenWordSet = wordSetObject[0];
 }
@@ -44,22 +43,27 @@ function displayWordSet(wordSet) {
   shuffleArray(shuffledValueWords);
 
   for (var i = 0; i < keyWords.length; i++) {
-    //debugger;
     $('.key-words ul').append(
       "<li>"
-      + "<label>"
+      + "<h5>"
       + keyWords[i]
-      + "</label>"
-      + "<input id='word-" + i + "-field' class='value-input-field' type='text' name='word-input-" + i + "'>"
+      + "</h5>"
+      + "</li>"
+    );
+    $('.droppable-area ul').append(
+      "<li>"
+      + "<div class='value-input-field' id='word-" + i + "-field' type='text' name='word-input-" + i + "'></div>"
       + "</li>"
     );
     $('.value-words ul').append(
-      "<li id='option-" + i + "'>"
-      + shuffledValueWords[i] +
-      "</li>"
+      "<li class='draggable' id='option-" + i + "'>"
+      + "<h5>"
+      + shuffledValueWords[i]
+      + "</h5>"
+      + "</li>"
     );
 
-    $('.key-words #word-' + i + '-field').data('answer', orderedValueWords[i]).droppable( {
+    $('.droppable-area #word-' + i + '-field').data('answer', orderedValueWords[i]).droppable( {
       accept: '.value-words li',
       hoverClass: 'hovered',
       drop: handleDropEvent
@@ -69,12 +73,8 @@ function displayWordSet(wordSet) {
       containment: '.matching-area',
       cursor: 'move',
       revert: true,
-      snap: '.key-words input',
-      snapMode: 'inner'
     } );
   }
-  console.log(keyWords + " : " + orderedValueWords + " : " + shuffledValueWords);
-
 }
 
 function shuffleArray(array) {
@@ -93,9 +93,11 @@ function handleDropEvent( event, ui ) {
   var selection = ui.draggable.data('selection');
 
   ui.draggable.draggable( 'option', 'revert', false );
+  ui.draggable.position( { of: $(this), my: 'center center', at: 'center center' } );
 
   if (answer === selection) {
     console.log("Correct!");
+    $(this).addClass( 'correct' );
     ui.draggable.draggable( 'disable' );
     correctAnswers++;
   } else {
@@ -110,28 +112,26 @@ function handleDropEvent( event, ui ) {
 
 $(document).ready(function(){
 
-  load("https://api.myjson.com/bins/14nftt");
+  load();
 
-  $('form').submit(function(event) {
+  $('#check').click(function(event) {
     event.preventDefault();
-    var answers = [];
-
     $('.value-input-field').each(function() {
-      answers.push($(this).val());
-    });
-
-    console.log(answers);
-    console.log(orderedValueWords);
-
-
-    for (var i = 0; i < answers.length; i++) {
-      if (answers[i] === orderedValueWords[i]) {
-        console.log(i + ": Correct!");
+      if ( $(this).hasClass( 'correct' ) === true ) {
+        $(this).css('background', '#7DCE82');
       } else {
-        console.log(i + ": Incorrect");
+        $(this).css('background', '#C97064');
       }
-    }
+    });
+  });
 
+  $('#reset').click(function(event) {
+    event.preventDefault();
+    chosenWordSet = [];
+    orderedValueWords = [];
+    correctAnswers = 0;
+    $("ul").empty();
+    load();
   });
 
 });
