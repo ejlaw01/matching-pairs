@@ -16,7 +16,7 @@ h3 {
   margin: 40px auto;
   max-width: 960px;
   font-size: 16pt;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 }
 
 h5 {
@@ -49,6 +49,7 @@ button {
 .container {
   max-width: 1000px;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 
 .matching-area {
@@ -71,6 +72,8 @@ button {
   width: 170px;
   border: 1px solid grey;
   border-radius: 5px;
+  -webkit-transition: background 1s ease;
+  -moz-transition: background 1s ease;
   transition: background .5s;
 }
 
@@ -89,20 +92,33 @@ button {
 
 #check {
   position: relative;
-  left: 15%;
+  left: 20%;
   background: #7DCE82;
 }
 #reset {
   position: relative;
-  right: 15%;
+  right: 10%;
   background: #FF8360;
+}
+
+#success-banner {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+#success-banner img {
+  width: 100%;
 }
 
 @media screen and (max-width: 650px) {
   h5 {
     font-size: 14pt;
+    padding-top: 10px;
   }
   .value-input-field {
-    width: 125px;
+    width: 120px;
   }
 }

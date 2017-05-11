@@ -7,7 +7,7 @@ function load() {
   loadJSON("https://api.myjson.com/bins/14nftt", function(response) {
       actual_JSON = JSON.parse(response);
       chooseWordSet(actual_JSON);
-      displayWordSet(chosenWordSet);
+      formatWordSet(chosenWordSet);
   });
 }
 
@@ -30,7 +30,7 @@ function chooseWordSet(data) {
   chosenWordSet = wordSetObject[0];
 }
 
-function displayWordSet(wordSet) {
+function formatWordSet(wordSet) {
   var value;
   var keyWords = Object.getOwnPropertyNames(wordSet);
   var shuffledValueWords = [];
@@ -105,7 +105,8 @@ function handleDropEvent( event, ui ) {
   }
 
   if (correctAnswers >= orderedValueWords.length) {
-    alert("All correct!");
+    $('#success-banner').fadeIn();
+    $('.value-input-field').css('background', 'white');
   }
 
 }
@@ -120,7 +121,7 @@ $(document).ready(function(){
       if ( $(this).hasClass( 'correct' ) === true ) {
         $(this).css('background', '#7DCE82');
       } else {
-        $(this).css('background', '#C97064');
+        $(this).css('background', '#ff857f');
       }
     });
   });
@@ -131,6 +132,7 @@ $(document).ready(function(){
     orderedValueWords = [];
     correctAnswers = 0;
     $("ul").empty();
+    $("#success-banner").fadeOut();
     load();
   });
 

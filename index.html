@@ -16,7 +16,7 @@
   <body>
     <div class="container">
       <h1>Matching Pairs</h1>
-      <h3>Drag each word on the right into the box by its most closely related counterpart on the left.</h3>
+      <h3>Drag each word on the right into the box by the most closely related word on the left.</h3>
       <div class="matching-area row">
         <div class="key-words three columns">
           <ul>
@@ -35,12 +35,15 @@
         </div>
       </div>
       <div class="button-area row">
-        <div class="six columns">
+        <div class="offset-by-one five columns">
           <button id="check" type="button">Check</button>
         </div>
-        <div class="six columns">
+        <div class="five columns">
           <button id="reset" type="button" name="button">Reset</button>
         </div>
+      </div>
+      <div id="success-banner">
+        <img src="img/success-banner.png" alt="success all answers correct">
       </div>
     </div>
   </body>
